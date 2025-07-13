@@ -1,0 +1,44 @@
+<div class="form-box">
+  <h3>Add New Customer</h3>
+  <form (ngSubmit)="addCustomer()" #formRef="ngForm">
+
+    <input
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Customer Name"
+      required
+      pattern="^[A-Za-z ]+$"
+      #nameRef="ngModel"
+    />
+    <div *ngIf="nameRef.invalid && nameRef.touched" class="error">
+      Only letters and spaces allowed
+    </div>
+
+    <input
+      [(ngModel)]="mobile"
+      name="mobile"
+      placeholder="Mobile Number"
+      required
+      pattern="^[0-9]{10}$"
+      #mobileRef="ngModel"
+    />
+    <div *ngIf="mobileRef.invalid && mobileRef.touched" class="error">
+      Enter a valid 10-digit mobile number
+    </div>
+
+    <input
+      [(ngModel)]="address"
+      name="address"
+      placeholder="Address"
+      required
+      pattern="^[A-Za-z0-9 ,.-]+$"
+      #addressRef="ngModel"
+    />
+    <div *ngIf="addressRef.invalid && addressRef.touched" class="error">
+      Address can contain letters, numbers, and , . -
+    </div>
+
+    <button type="submit" [disabled]="formRef.invalid">Add</button>
+    <button type="button" (click)="cancel.emit()">Cancel</button>
+  </form>
+</div>

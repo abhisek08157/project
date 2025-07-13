@@ -1,0 +1,43 @@
+<h2>Customer List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Address</th>
+      <th *ngIf="auth.getRole() === 'Admin'">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of customers">
+      <td>{{ c.id }}</td>
+      <td *ngIf="editingId !== c.id">{{ c.name }}</td>
+      <td *ngIf="editingId === c.id">
+        <input [(ngModel)]="editedCustomer.name" />
+      </td>
+
+      <td *ngIf="editingId !== c.id">{{ c.mobile }}</td>
+      <td *ngIf="editingId === c.id">
+        <input [(ngModel)]="editedCustomer.mobile" />
+      </td>
+
+      <td *ngIf="editingId !== c.id">{{ c.address }}</td>
+      <td *ngIf="editingId === c.id">
+        <input [(ngModel)]="editedCustomer.address" />
+      </td>
+
+     <td *ngIf="auth.getRole() === 'Admin'">
+  <ng-container *ngIf="editingId !== c.id">
+    <button (click)="startEdit(c)">✏️ Edit</button>
+    <button (click)="deleteCustomer(c.id)">🗑 Delete</button>
+  </ng-container>
+  <ng-container *ngIf="editingId === c.id">
+    <button (click)="saveEdit()">💾 Save</button>
+    <button (click)="cancelEdit()">❌ Cancel</button>
+  </ng-container>
+</td>
+
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,18 @@
+<div class="employee-dashboard">
+  <h2>Welcome, Employee</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">👥 Customers: {{ totalCustomers }}</div>
+  </div>
+
+  <div class="actions">
+    <button routerLink="/transactions">🛒 Make Sale</button>
+    <button (click)="showAddCustomer = true">➕ Add Customer</button>
+    <button routerLink="/products">📦 View Products</button>
+  </div>
+
+  <app-add-customer
+    *ngIf="showAddCustomer"
+    (cancel)="onAddCustomerClosed()"
+  ></app-add-customer>
+</div>

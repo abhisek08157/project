@@ -1,0 +1,46 @@
+<div class="form-box">
+  <h3>Add New Product</h3>
+  <form (ngSubmit)="addProduct()" #productForm="ngForm">
+
+    <input
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Product Name"
+      required
+      pattern="^[A-Za-z0-9 ()/-]+$"
+      #nameRef="ngModel"
+    />
+    <div *ngIf="nameRef.invalid && nameRef.touched" class="error">
+      Letters, numbers, spaces, ( ) / - allowed
+    </div>
+
+    <input
+      [(ngModel)]="price"
+      name="price"
+      placeholder="Price"
+      required
+      type="number"
+      min="1"
+      #priceRef="ngModel"
+    />
+    <div *ngIf="priceRef.invalid && priceRef.touched" class="error">
+      Enter a valid price (positive number)
+    </div>
+
+    <input
+      [(ngModel)]="stock"
+      name="stock"
+      placeholder="Stock Quantity"
+      required
+      type="number"
+      min="1"
+      #stockRef="ngModel"
+    />
+    <div *ngIf="stockRef.invalid && stockRef.touched" class="error">
+      Enter stock (at least 1)
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid">Add</button>
+    <button type="button" (click)="cancel.emit()">Cancel</button>
+  </form>
+</div>

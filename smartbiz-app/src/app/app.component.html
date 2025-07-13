@@ -1,0 +1,13 @@
+<nav class="navbar" *ngIf="auth.isLoggedIn()">
+  <div class="logo">SmartBiz</div>
+  <div class="nav-links">
+    <a routerLink="/admin" *ngIf="auth.getRole() === 'Admin'">Dashboard</a>
+    <a routerLink="/employee" *ngIf="auth.getRole() === 'Employee'">Dashboard</a>
+    <a routerLink="/customers">Customers</a>
+    <a routerLink="/products">Products</a>
+    <a routerLink="/transactions">Transactions</a>
+    <a routerLink="/reports" *ngIf="auth.getRole() === 'Admin'">Reports</a>
+    <button (click)="auth.logout()" class="logout-btn">Logout</button>
+  </div>
+</nav>
+<router-outlet></router-outlet>

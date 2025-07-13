@@ -1,0 +1,28 @@
+<div class="admin-dashboard">
+  <h2>Welcome, Admin</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">👥 Customers: {{ totalCustomers }}</div>
+    <div class="stat-card">📦 Products: {{ totalProducts }}</div>
+    <div class="stat-card">💰 Sales: ₹12,000</div>
+    <div class="stat-card">🧾 Dues: ₹1,500</div>
+  </div>
+
+  <h3>Quick Actions</h3>
+  <div class="actions">
+    <button (click)="showAddCustomer = true">➕ Add Customer</button>
+    <button (click)="showAddProduct = true">➕ Add Product</button>
+    <button routerLink="/transactions">📄 View Transactions</button>
+    <button routerLink="/reports">📊 View Reports</button>
+  </div>
+
+  <app-add-customer
+    *ngIf="showAddCustomer"
+    (cancel)="onAddCustomerClosed()"
+  ></app-add-customer>
+
+  <app-add-product
+    *ngIf="showAddProduct"
+    (cancel)="onAddProductClosed()"
+  ></app-add-product>
+</div>

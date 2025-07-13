@@ -1,0 +1,44 @@
+<h2>Product List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price (₹)</th>
+      <th>Stock</th>
+      <th *ngIf="auth.getRole() === 'Admin'">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.id }}</td>
+
+      <td *ngIf="editingId !== p.id">{{ p.name }}</td>
+      <td *ngIf="editingId === p.id">
+        <input [(ngModel)]="editedProduct.name" />
+      </td>
+
+      <td *ngIf="editingId !== p.id">{{ p.price }}</td>
+      <td *ngIf="editingId === p.id">
+        <input [(ngModel)]="editedProduct.price" type="number" />
+      </td>
+
+      <td *ngIf="editingId !== p.id">{{ p.stock }}</td>
+      <td *ngIf="editingId === p.id">
+        <input [(ngModel)]="editedProduct.stock" type="number" />
+      </td>
+
+     <td *ngIf="auth.getRole() === 'Admin'">
+  <ng-container *ngIf="editingId !== p.id">
+    <button (click)="startEdit(p)">✏️ Edit</button>
+    <button (click)="deleteProduct(p.id)">🗑 Delete</button>
+  </ng-container>
+  <ng-container *ngIf="editingId === p.id">
+    <button (click)="saveEdit()">💾 Save</button>
+    <button (click)="cancelEdit()">❌ Cancel</button>
+  </ng-container>
+</td>
+
+    </tr>
+  </tbody>
+</table>

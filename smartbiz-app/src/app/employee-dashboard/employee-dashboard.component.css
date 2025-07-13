@@ -1,0 +1,54 @@
+.employee-dashboard {
+  padding: 2rem;
+  background-color: #f4f9ff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.employee-dashboard h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.actions button {
+  flex: 1 1 200px;
+  padding: 1rem;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.actions button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+.stats-grid {
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-card {
+  flex: 1;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #34495e;
+}
+
